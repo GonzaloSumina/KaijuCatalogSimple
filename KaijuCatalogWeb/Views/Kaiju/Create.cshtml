@@ -1,0 +1,46 @@
+
+@model KaijuCatalogWeb.Domain.Kaiju
+
+@{
+    ViewData["Title"] = "Registrar Kaiju";
+}
+
+<h1>Registrar Kaiju</h1>
+<div asp-validation-summary="All" style="color: red"></div>
+
+<form asp-controller="Kaiju" asp-action="Create" method="post">
+    <div>
+        <label asp-for="Id">Identificador</label>
+        <input asp-for="Id" type="number" name="id" required min="1" />
+    </div>
+
+    <div>
+        <label asp-for="Name">Nombre</label>
+        <input asp-for="Name" name="name" required />
+    </div>
+
+    <div>
+        <label asp-for="Height">Altura (metros)</label>
+        <input asp-for="Height" name="height" type="number" step="any" required min="0.01" />
+    </div>
+
+    <div>
+        <label asp-for="Weight">Peso (toneladas)</label>
+        <input asp-for="Weight" name="weight" type="number" step="any" required min="0.01" />
+    </div>
+
+    <div>
+        <label asp-for="ThreatLevel">Nivel de amenaza</label>
+        <select asp-for="ThreatLevel" name="threatLevel" required>
+            <option value="">Selecciona un nivel</option>
+            <option value="Bajo">Bajo</option>
+            <option value="Medio">Medio</option>
+            <option value="Alto">Alto</option>
+            <option value="Extremo">Extremo</option>
+        </select>
+    </div>
+
+    <button type="submit">Registrar</button>
+</form>
+
+<p><a asp-controller="Home" asp-action="Index">Volver al catálogo</a></p>

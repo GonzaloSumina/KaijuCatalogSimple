@@ -1,0 +1,43 @@
+﻿
+@model IEnumerable<KaijuCatalogWeb.Domain.Kaiju>
+
+@{
+    ViewData["Title"] = "Catálogo de Kaijus";
+}
+
+<h1>Catálogo de Kaijus</h1>
+
+<p>
+    <a asp-controller="Kaiju" asp-action="Create">Registrar nuevo Kaiju</a>
+</p>
+
+@if (!Model.Any())
+{
+    <p>No hay Kaijus registrados.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Altura (m)</th>
+                <th>Peso (t)</th>
+                <th>Amenaza</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var kaiju in Model)
+            {
+                <tr>
+                    <td>@kaiju.Id</td>
+                    <td>@kaiju.Name</td>
+                    <td>@kaiju.Height</td>
+                    <td>@kaiju.Weight</td>
+                    <td>@kaiju.ThreatLevel</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
